@@ -1,0 +1,51 @@
+<p>Це тест компонент</p>
+<p>{{ title }}</p>
+<p>{{ getFullName() }}</p>
+
+<p [ngStyle]="{ color: 'red' }">Тут використано ngStyle</p>
+<p [ngClass]="{ active: isActive, disabled: isDisabled }">
+  Тут використано ngClass
+</p>
+
+<div class="test-container">
+  <button [disabled]="!isEnabled">Click me</button>
+
+  <div class="event-example" [ngClass]="{ clicked: isClickedState }"></div>
+  <button (click)="toggleState()">tap me</button>
+  <input type="text" [(ngModel)]="inputText" />
+  <p>{{ inputText }}</p>
+  <p>{{ childMessage }}</p>
+  <button (click)="sendMessageToParent()">Send Message to Parent</button>
+  <p appHighlight [highlightColor]="'violet'">Наведи мишку сюди!</p>
+
+  <div class="todo-container">
+    <input
+      [(ngModel)]="newTask"
+      placeholder="add new task..."
+      class="todo-input"
+    />
+    <button (click)="addTask()" class="add-btn">Add</button>
+
+    <ul class="todo-list">
+      <li *ngFor="let task of tasks; let i = index" class="todo-item">
+        {{ task }}
+        <button (click)="removeTask(i)" class="remove-btn">Remove</button>
+      </li>
+    </ul>
+  </div>
+
+  <p>{{ today | date : "shortDate" }}</p>
+  <p>{{ "hello, world!" | uppercase }}</p>
+  <p>{{ "HELLO, WORLD" | lowercase }}</p>
+  <p>{{ 1500.5 | currency }}</p>
+  <p>{{ 1.23456 | number }}</p>
+  <p>{{ 0.5 | percent }}</p>
+  <p>{{ "Hello, world" | slice : 1 : 5 }}</p>
+  <p>{{ { name: "John", age: 30 } | json }}</p>
+  <p>{{ "Long text, wich needs to be concate" | truncate : 10 }}</p>
+  <p>
+    Зразок вкладеного кастомного та вбудованого пайпів: "{{
+      longText | truncate : 10 | uppercase
+    }}"
+  </p>
+</div>
