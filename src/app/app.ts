@@ -9,7 +9,8 @@ import { Preparation } from './components/preparation/preparation';
 import { PageNotFound } from './components/page-not-found/page-not-found';
 import { UserPanel } from './components/user-panel/user-panel';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({

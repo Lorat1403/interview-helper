@@ -1,3 +1,8 @@
+@if (isLoading) {
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @else {
 <table
   mat-table
   [dataSource]="dataSource"
@@ -18,12 +23,12 @@
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let element; let i = index">
       <button
         mat-flat-button
         color="primary"
         class="text-uppercase"
-        (click)="openGenerateDialog(element)"
+        (click)="openGenerateDialog(element, i)"
       >
         Generate Answer
       </button>
@@ -41,3 +46,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+}

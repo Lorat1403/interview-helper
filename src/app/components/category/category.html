@@ -1,3 +1,8 @@
+@if (isLoading) {
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @else {
 <table
   mat-table
   [dataSource]="dataSource"
@@ -41,3 +46,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+}
