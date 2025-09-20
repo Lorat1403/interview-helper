@@ -1,18 +1,13 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { Angular } from './components/angular/angular';
-import { Typescript } from './components/typescript/typescript';
-import { Javascript } from './components/javascript/javascript';
-import { Rxjs } from './components/rxjs/rxjs';
+import { Category } from './components/category/category';
+import { Preparation } from './components/preparation/preparation';
 import { PageNotFound } from './components/page-not-found/page-not-found';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: Home },
-  { path: 'angular', component: Angular },
-  { path: 'typescript', component: Typescript },
-  { path: 'javascript', component: Javascript },
-  { path: 'rxjs', component: Rxjs },
+
+  { path: 'categories/:categoryId', component: Category },
+  { path: 'preparation', component: Preparation },
+  {path:'', redirectTo: '/categories/angular', pathMatch: 'full'},
   { path: '**', component: PageNotFound }
 
 ];

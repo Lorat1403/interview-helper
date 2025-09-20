@@ -1,6 +1,8 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 import { concatMap, delay, from, of } from 'rxjs';
 
+//робить анімацію друку тексту
+
 @Directive({
   selector: '[appTypingAnimation]'
 })
