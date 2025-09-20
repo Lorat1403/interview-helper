@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { TopMenu } from './components/top-menu/top-menu';
 import { LeftSideMenu } from './components/left-side-menu/left-side-menu';
 import { Category } from './components/category/category';
@@ -9,9 +10,7 @@ import { PageNotFound } from './components/page-not-found/page-not-found';
 import { UserPanel } from './components/user-panel/user-panel';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-// import { RouterLinkActive, RouterOutlet } from '@angular/router';
 
-// import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
