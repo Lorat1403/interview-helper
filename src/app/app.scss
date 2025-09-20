@@ -1,28 +1,29 @@
- li{
-  padding-top: 10px;
- }
-p {
-  padding: 10px;
-  color: rgb(220, 22, 108);
-  font-style: italic;
-  font-size: 20px;
+.container {
+  height: 100%;
+  // background-color: rgb(84, 81, 81);
+  // color:antiquewhite
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.content {
+  padding: 20px;
   
 }
 
-.main_div {
-  margin: 20px;
-   padding: auto;
-   background-color: beige;
-   border-radius: 5px;
+.side-bar-title {
+  padding: 16px;
 }
 
-.active {
-  color:rgb(102, 0, 255);
-  font-weight: bold;
-  font-size: 18px;
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  
 }
 
-.main-section {
-  margin: 20px;
-  padding-left: 10px;
+.spacer {
+  flex: 1 1 auto;
 }

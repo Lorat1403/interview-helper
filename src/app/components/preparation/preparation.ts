@@ -3,13 +3,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmModal } from '../delete-confirm-modal/delete-confirm-modal';
-import { QuestionItem, MOCK_DATA } from '../category/category.config';
+import { QuestionItem } from '../category/category.config';
+import { MOCK_DATA } from './preparation.config';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { GenerateAnswerModal } from '../generate-answer-modal/generate-answer-modal';
 
 @Component({
   selector: 'app-preparation',
-  imports: [MatTableModule, MatButtonModule, TruncatePipe],
+  imports: [MatTableModule, MatButtonModule],
   templateUrl: './preparation.html',
   styleUrl: './preparation.scss'
 })

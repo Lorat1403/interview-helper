@@ -1,15 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterLinkActive, RouterOutlet } from '@angular/router';
+import { TopMenu } from './components/top-menu/top-menu';
+import { LeftSideMenu } from './components/left-side-menu/left-side-menu';
+import { Category } from './components/category/category';
+import { DeleteConfirmModal } from './components/delete-confirm-modal/delete-confirm-modal';
+import { GenerateAnswerModal } from './components/generate-answer-modal/generate-answer-modal';
+import { Preparation } from './components/preparation/preparation';
+import { PageNotFound } from './components/page-not-found/page-not-found';
+import { UserPanel } from './components/user-panel/user-panel';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+// import { RouterLinkActive, RouterOutlet } from '@angular/router';
 
-import { RouterLink } from '@angular/router';
+// import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [TopMenu, LeftSideMenu, Preparation, UserPanel, MatSidenavModule, MatToolbarModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('interview-helper');
+  // protected readonly title = signal('interview-helper');
   
 }
