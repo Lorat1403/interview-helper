@@ -1,3 +1,5 @@
+import { QuestionItem } from "../components/category/category.config";
+
 export interface Responce<T>{
   data: T;
   errror?: string;
@@ -6,5 +8,27 @@ export interface Responce<T>{
 export interface ResponceArray<T>{
   data: T[];
   error?: string;
+}
+
+export interface UserRegisterResponse {
+  accessToken: string;
+  user: User;
+}
+
+export interface UserLoginResponse extends UserRegisterResponse {}
+
+export interface CategoryResponse {
+  id: number;
+  categoryId: number;
+  name: string;
+  questions: QuestionItem[];
+}
+
+export interface User {
+  id: number;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
   

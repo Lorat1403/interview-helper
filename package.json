@@ -5,8 +5,11 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "ng serve",
+    "start:backend": "json-server-auth server/db.json -r server/routes.json",
     "build": "ng build",
+     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,6 +31,7 @@
     "@angular/material": "^20.2.3",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "concurrently": "^9.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
