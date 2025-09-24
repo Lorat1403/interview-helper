@@ -17,7 +17,7 @@ import { GenerateAnswerModal } from '../generate-answer-modal/generate-answer-mo
   templateUrl: './preparation.html',
   styleUrl: './preparation.scss'
 })
-export class Preparation {
+export class Preparation implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['position', 'question', 'actions'];
   dataSource = new MatTableDataSource<QuestionItem>();
