@@ -12,6 +12,7 @@ import { GenerateAnswerModal } from '../generate-answer-modal/generate-answer-mo
 
 @Component({
   selector: 'app-preparation',
+  standalone: true,
   imports: [MatTableModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './preparation.html',
   styleUrl: './preparation.scss'
@@ -49,18 +50,19 @@ export class Preparation {
   }
 
     updateAnswer(
-    categoryName: string,
     question: Partial<QuestionItem>,
     id: number
   ): void {
     this.preparationService
-      .updatePreparationQuestionById(categoryName, question, id)
+      .updatePreparationQuestionById(question, id)
+      .pipe(switchMap(() => this.preparationService.getPreparationQuestionsByCategory(this.category)))
       .subscribe((response) => {
         console.log(response);
+        this.dataSource = response.data as any;
       });
   }
   
-  openGenerateDialog(question: QuestionItem, index:number): void{
+  openGenerateDialog(question: QuestionItem, index: number): void {
     const dialogRef = this.dialog.open(GenerateAnswerModal, {
       width: '500px',
       data: {
@@ -72,26 +74,25 @@ export class Preparation {
     dialogRef.afterClosed().subscribe((result: string) => {
       console.log('The dialog was closed', result);
       if (result) {
-         this.updateAnswer(this.category, { answer: result }, question.id);
-        // TODO - call the service for updating an answer
+        this.updateAnswer({ answer: result }, question.id);
       }
     });
   }
 
-openDeleteDialog(question: QuestionItem): void{
-  const dialogRef = this.dialog.open(DeleteConfirmModal, {
-    width: '333px',
-  });
+  openDeleteDialog(question: QuestionItem): void {
+    const dialogRef = this.dialog.open(DeleteConfirmModal, {
+      width: '333px',
+    });
 
-  dialogRef.afterClosed().subscribe((result: boolean) => {
-    console.log('The dialog was closed', result);
-    if (result) {
-      console.log('Question would be deleted.', question);
-       this.deleteAnswer(this.category, question.id);
-      // TODO - call the service for deleting an answer
-    }
-  });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log('The dialog was closed', result);
+      if (result) {
+        console.log('Question would be deleted.', question);
+        this.deleteAnswer(this.category, question.id);
+      }
+    });
   }
+
   
    deleteAnswer(
     categoryName: string,
@@ -99,7 +100,11 @@ openDeleteDialog(question: QuestionItem): void{
   ): void {
     this.preparationService
       .deletePreparationQuestionById(categoryName, id)
-      .subscribe((response) => console.log(response));
+      .pipe(switchMap(() => this.preparationService.getPreparationQuestionsByCategory(this.category)))
+      .subscribe((response) => {
+        console.log(response);
+        this.dataSource = response.data as any;
+      });
   }
 
 }

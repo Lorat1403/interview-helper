@@ -12,6 +12,7 @@ import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-user-panel',
+  standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './user-panel.html',
   styleUrl: './user-panel.scss'

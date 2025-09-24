@@ -8,6 +8,7 @@ import { SignInService } from '../../services/sign-in.service';
 
 @Component({
   selector: 'app-sign-in-modal',
+  standalone: true,
   imports: [CommonModule, MatInputModule, ReactiveFormsModule, MatButtonModule],
   templateUrl: './sign-in-modal.html',
   styleUrl: './sign-in-modal.scss'

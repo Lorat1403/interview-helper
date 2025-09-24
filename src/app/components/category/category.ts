@@ -13,6 +13,7 @@ import { TruncatePipe } from '../../pipes/truncate-pipe';
 
 @Component({
   selector: 'app-category',
+  standalone: true,
   imports: [MatTableModule, MatButtonModule, MatProgressSpinnerModule, TruncatePipe],
   templateUrl: './category.html',
   styleUrl: './category.scss'

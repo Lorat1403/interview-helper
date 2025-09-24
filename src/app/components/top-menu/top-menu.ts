@@ -6,6 +6,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-top-menu',
+  standalone: true,
   imports: [MatTabsModule, RouterModule],
   templateUrl: './top-menu.html',
   styleUrl: './top-menu.scss'

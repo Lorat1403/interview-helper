@@ -8,6 +8,7 @@ import { SignUpService } from '../../services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up-modal',
+  standalone: true,
   imports: [MatDialogModule, MatButtonModule, MatInputModule, ReactiveFormsModule, CommonModule],
   templateUrl: './sign-up-modal.html',
   styleUrl: './sign-up-modal.scss'
