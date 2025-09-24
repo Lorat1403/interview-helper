@@ -1,11 +1,11 @@
 import { QuestionItem } from "../components/category/category.config";
 
-export interface Responce<T>{
+export interface Response<T>{
   data: T;
   errror?: string;
 }
 
-export interface ResponceArray<T>{
+export interface ResponseArray<T>{
   data: T[];
   error?: string;
 }

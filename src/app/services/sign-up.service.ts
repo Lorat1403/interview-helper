@@ -8,7 +8,7 @@ import { UserRegisterResponse } from '../models/response.models';
   providedIn: 'root',
 })
 export class SignUpService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000'; // зазвичай ці дані зберігаються в.env
 
   constructor(
     private http: HttpClient,

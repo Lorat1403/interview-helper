@@ -17,7 +17,7 @@ import { TruncatePipe } from '../../pipes/truncate-pipe';
   templateUrl: './category.html',
   styleUrl: './category.scss'
 })
-export class Category {
+export class Category implements  OnInit, OnDestroy{
   displayedColumns: string[] = ['position', 'question', 'answer', 'actions'];
   dataSource = new MatTableDataSource<QuestionItem>();
   category: string = '';
@@ -47,11 +47,12 @@ export class Category {
      this.destroy$.complete();
   }
   
-  deleteAnswer(categoryName: string, id: number): void {
+  deleteAnswer(id: number): void {
     this.categoriesService
-      .deleteCategoryQuestionById(categoryName, id)
+      .deleteCategoryQuestionById(id).pipe(switchMap(()=> this.categoriesService.getQuestionsByCategory(this.category)))
       .subscribe((response) => {
         console.log(response);
+        this.dataSource = response.data as any;
       });
   }
   
@@ -60,10 +61,10 @@ export class Category {
       width: '333px',
     });
 
-    dialogRef.afterClosed().subscribe((result: boolean) => {
+    dialogRef.afterClosed().subscribe((result: boolean) => { console.log('Question was closed.', result);
       if (result) {
-        console.log('Question wuold be deleted.', question);
-         this.deleteAnswer(this.category, question.id);
+       console.log('Question was deleted.', question);
+         this.deleteAnswer(question.id);
         // TODO - call the service for deleting an answer
       }
     });

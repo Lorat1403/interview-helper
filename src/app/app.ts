@@ -21,5 +21,4 @@ import { HttpClient } from '@angular/common/http';
 })
 export class App {
   // protected readonly title = signal('interview-helper');
-  
-}
+  }

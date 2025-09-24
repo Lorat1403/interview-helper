@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, delay, map, of } from "rxjs";
 import { MOCK_DATA, QuestionItem } from "../components/category/category.config";
-import { Responce, ResponceArray } from "../models/response.models";
+import {CategoryResponse, Response, ResponseArray } from "../models/response.models";
 import { get } from 'lodash';
 
 
@@ -11,57 +11,42 @@ import { get } from 'lodash';
 })
 
 export class PreparationService {
-  public baseUrl = 'http://localhost:4200';
+  public baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
-  getPreparationQuestionsByCategory(categoryName: string): Observable<ResponceArray<QuestionItem>> {
-    // Simulate HTTP request with a delay
-    return of(get(MOCK_DATA, categoryName)).pipe(
-      map((questions: QuestionItem[]) => ({
-        data: [...questions],
-      })),
-      delay(500)
-    );
-
-     // return this.http.get<ResponseArray<QuestionItem>>(
-    //   `${this.baseUrl}/preparation/${categoryName}`
-    // );
+  getPreparationQuestionsByCategory(
+    categoryName: string
+  ): Observable<ResponseArray<QuestionItem>> {
+    return this.http
+      .get<ResponseArray<CategoryResponse[]>>(
+        `${this.baseUrl}/preparation/${categoryName}`
+      )
+      .pipe(
+        map((response: any) => {
+          return { data: response[0]?.questions || []};
+        }),
+        delay(500)
+      );
   }
 
-  updatePreparationQuestionById(
-    categoryName: string,
+   updatePreparationQuestionById(
     question: Partial<QuestionItem>,
     id: number
-  ): Observable<Responce<QuestionItem>> {
-    return of(
-      get(MOCK_DATA, categoryName).filter(
-        (question: QuestionItem) => question.id === id
-      )
-    ).pipe(
-      map((q) => {
-        return {
-          data: { ...q[0], ...question },
-        };
-      }),
-      delay(500)
+  ): Observable<Response<QuestionItem>> {
+    return this.http.patch<Response<QuestionItem>>(
+      `${this.baseUrl}/664/questions/${id}`,
+      { ...question }
     );
-
-    // return this.http.patch<Response<QuestionItem>>(
-    //   `${this.baseUrl}/category/${categoryName}/${id}`,
-    //   { ...question }
-    // );
   }
 
-deletePreparationQuestionById(
+ deletePreparationQuestionById(
     categoryName: string,
     id: number
-  ): Observable<Responce<QuestionItem>> {
-    return of();
-
-    // return this.http.delete<Response<QuestionItem>>(
-    //   `${this.baseUrl}/preparation/${categoryName}/${id}`
-    // );
+  ): Observable<Response<QuestionItem>> {
+    return this.http.delete<Response<QuestionItem>>(
+      `${this.baseUrl}/664/questions/${id}`
+    );
   }
   
 }

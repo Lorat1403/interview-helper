@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+import { SignInService } from '../../services/sign-in.service';
 
 @Component({
   selector: 'app-sign-in-modal',
@@ -16,18 +17,19 @@ export class SignInModal {
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<SignInModal>
+    public dialogRef: MatDialogRef<SignInModal>,
+    public signInService: SignInService,
   ) {
     this.signInForm = this.fb.group({
-      login: ['', Validators.required],
+       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
   onSubmit() {
     if (this.signInForm.valid) {
-      const { login, password } = this.signInForm.value;
-      console.log('Login:', login);
+      const { email, password } = this.signInForm.value;
+      console.log('Email', email);
       console.log('Password:', password);
       // TODO - Call the service
       this.dialogRef.close(this.signInForm.value);
@@ -38,8 +40,8 @@ export class SignInModal {
     this.dialogRef.close();
   }
 
-  get login() {
-    return this.signInForm.get('login');
+  get email() {
+    return this.signInForm.get('email');
   }
 
   get password() {
