@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, delay, map, of } from "rxjs";
-import { MOCK_DATA, QuestionItem } from "../components/category/category.config";
+import { QuestionItem } from "../components/category/category.config";
 import {CategoryResponse, Response, ResponseArray } from "../models/response.models";
-import { get } from 'lodash';
+
 
 
 @Injectable({  providedIn: 'root'
