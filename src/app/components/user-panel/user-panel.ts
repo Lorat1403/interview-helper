@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Observable, of, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInModal } from '../sign-in-modal/sign-in-modal';
 import { SignUpModal } from '../sign-up-modal/sign-up-modal';

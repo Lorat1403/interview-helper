@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopMenu } from './components/top-menu/top-menu';
 import { LeftSideMenu } from './components/left-side-menu/left-side-menu';
@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TopMenu, LeftSideMenu, Preparation, UserPanel, MatSidenavModule, MatToolbarModule],
+  imports: [TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

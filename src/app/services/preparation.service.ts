@@ -40,8 +40,7 @@ export class PreparationService {
     );
   }
 
- deletePreparationQuestionById(
-    categoryName: string,
+ deletePreparationQuestionById(categoryName: string,
     id: number
   ): Observable<Response<QuestionItem>> {
     return this.http.delete<Response<QuestionItem>>(
