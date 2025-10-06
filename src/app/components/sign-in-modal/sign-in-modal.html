@@ -1,14 +1,9 @@
 <h2 class="modal-header">Sign In</h2>
 <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" />
-    @if (email?.invalid && (email?.dirty || email?.touched)) {
-    <mat-error>
-      @if (email?.hasError('required')) { Email is required } @if
-      (email?.hasError('email')) { Please enter a valid email address }
-    </mat-error>
-    }
+    <mat-label>Login</mat-label>
+    <input matInput formControlName="login" />
+    @if (login?.invalid && (login?.dirty || login?.touched)) { }
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>

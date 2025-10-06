@@ -48,12 +48,11 @@ export class Category implements  OnInit, OnDestroy{
      this.destroy$.complete();
   }
   
-  deleteAnswer(id: number): void {
+  deleteAnswer(categoryName: string, id: number): void {
     this.categoriesService
-      .deleteCategoryQuestionById(id).pipe(switchMap(()=> this.categoriesService.getQuestionsByCategory(this.category)))
+      .deleteCategoryQuestionById(categoryName, id)
       .subscribe((response) => {
         console.log(response);
-        this.dataSource = response.data as any;
       });
   }
   
@@ -62,11 +61,11 @@ export class Category implements  OnInit, OnDestroy{
       width: '333px',
     });
 
-    dialogRef.afterClosed().subscribe((result: boolean) => { console.log('Question was closed.', result);
+     dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log('The dialog was closed', result);
       if (result) {
-       console.log('Question was deleted.', question);
-         this.deleteAnswer(question.id);
-        // TODO - call the service for deleting an answer
+        console.log('Question would be deleted.', question);
+        this.deleteAnswer(this.category, question.id);
       }
     });
   }

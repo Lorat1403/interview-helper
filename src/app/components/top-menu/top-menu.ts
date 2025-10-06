@@ -20,7 +20,7 @@ export class TopMenu implements OnInit, OnDestroy {
   constructor(public router: Router, private route: ActivatedRoute) { }
   
   changeTab(event: MatTabChangeEvent) {
-    if (this.tabIndex = event.index) {
+    if (this.tabIndex === event.index) {
       return;
     }
     this.tabIndex = event.index;
@@ -37,7 +37,7 @@ export class TopMenu implements OnInit, OnDestroy {
         this.tabIndex = +queryParams['tabIndex'];
       }
     });
-    // Subscribe to route changes or any other initialization logic
+    
   }
 
   ngOnDestroy() {

@@ -50,19 +50,18 @@ export class Preparation implements OnInit, OnDestroy {
   }
 
     updateAnswer(
+    categoryName: string,
     question: Partial<QuestionItem>,
     id: number
   ): void {
     this.preparationService
-      .updatePreparationQuestionById(question, id)
-      .pipe(switchMap(() => this.preparationService.getPreparationQuestionsByCategory(this.category)))
+      .updatePreparationQuestionById(categoryName, question, id)
       .subscribe((response) => {
         console.log(response);
-        this.dataSource = response.data as any;
       });
   }
   
-  openGenerateDialog(question: QuestionItem, index: number): void {
+   openGenerateDialog(question: QuestionItem, index: number): void {
     const dialogRef = this.dialog.open(GenerateAnswerModal, {
       width: '500px',
       data: {
@@ -74,7 +73,7 @@ export class Preparation implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result: string) => {
       console.log('The dialog was closed', result);
       if (result) {
-        this.updateAnswer({ answer: result }, question.id);
+         this.updateAnswer(this.category, { answer: result }, question.id);
       }
     });
   }
@@ -94,17 +93,13 @@ export class Preparation implements OnInit, OnDestroy {
   }
 
   
-   deleteAnswer(
+  deleteAnswer(
     categoryName: string,
     id: number
   ): void {
     this.preparationService
       .deletePreparationQuestionById(categoryName, id)
-      .pipe(switchMap(() => this.preparationService.getPreparationQuestionsByCategory(this.category)))
-      .subscribe((response) => {
-        console.log(response);
-        this.dataSource = response.data as any;
-      });
+      .subscribe((response) => console.log(response));
   }
 
 }

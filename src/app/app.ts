@@ -16,10 +16,10 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet],
+  imports: [ TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet, Category, Preparation, DeleteConfirmModal, GenerateAnswerModal, PageNotFound],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  // protected readonly title = signal('interview-helper');
+
   }
