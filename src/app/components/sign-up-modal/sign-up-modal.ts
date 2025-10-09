@@ -5,7 +5,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 // Update the import path if the service is located elsewhere
-// import { SignUpService } from '../../services/sign-up.service';
+import { SignUpService } from '../../services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up-modal',
@@ -20,10 +20,9 @@ export class SignUpModal {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<SignUpModal>,
-    
-  ) {
+    public signUpService: SignUpService,
+      ) {
     this.signUpForm = this.fb.group({
-        login: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', Validators.required],
@@ -33,22 +32,20 @@ export class SignUpModal {
 
   onSubmit() {
     if(this.signUpForm.valid) {
-    const {login, email, password, firstName, lastName } = this.signUpForm.value;
-     console.log('Login:', login);
-      console.log('Password:', password);
-      console.log('Email:', email);
-      console.log('First Name:', firstName);
-      console.log('Last Name:', lastName);
+    const {email, password, firstName, lastName } = this.signUpForm.value;
+     this.signUpService.register(email, password, firstName, lastName).subscribe(() => {
         this.dialogRef.close(this.signUpForm.value);
+      });
     }
   }
+
 onCancel(): void {
     this.dialogRef.close();
 }
   
-get login() {
-  return this.signUpForm.get('login');
-}
+// get login() {
+//   return this.signUpForm.get('login');
+// }
 
 get email() {
   return this.signUpForm.get('email');
