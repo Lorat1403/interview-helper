@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet, Category, Preparation, DeleteConfirmModal, GenerateAnswerModal, PageNotFound],
+  imports: [ TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
