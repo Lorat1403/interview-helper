@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopMenu } from './components/top-menu/top-menu';
 import { LeftSideMenu } from './components/left-side-menu/left-side-menu';
@@ -15,11 +15,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [TopMenu, LeftSideMenu, Preparation, UserPanel, MatSidenavModule, MatToolbarModule],
+  standalone: true,
+  imports: [ TopMenu, LeftSideMenu, UserPanel, MatSidenavModule, MatToolbarModule, RouterOutlet, Category, Preparation, DeleteConfirmModal, GenerateAnswerModal, PageNotFound],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  // protected readonly title = signal('interview-helper');
-  
-}
+
+  }

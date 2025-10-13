@@ -4,7 +4,8 @@ import { concatMap, delay, from, of } from 'rxjs';
 //робить анімацію друку тексту
 
 @Directive({
-  selector: '[appTypingAnimation]'
+  selector: '[appTypingAnimation]',
+  standalone: true,
 })
 export class TypingAnimation implements OnChanges{
     @Input() appTypingAnimation: string = '';

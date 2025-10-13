@@ -6,6 +6,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-top-menu',
+  standalone: true,
   imports: [MatTabsModule, RouterModule],
   templateUrl: './top-menu.html',
   styleUrl: './top-menu.scss'
@@ -19,7 +20,7 @@ export class TopMenu implements OnInit, OnDestroy {
   constructor(public router: Router, private route: ActivatedRoute) { }
   
   changeTab(event: MatTabChangeEvent) {
-    if (this.tabIndex = event.index) {
+    if (this.tabIndex === event.index) {
       return;
     }
     this.tabIndex = event.index;
@@ -36,7 +37,7 @@ export class TopMenu implements OnInit, OnDestroy {
         this.tabIndex = +queryParams['tabIndex'];
       }
     });
-    // Subscribe to route changes or any other initialization logic
+    
   }
 
   ngOnDestroy() {
