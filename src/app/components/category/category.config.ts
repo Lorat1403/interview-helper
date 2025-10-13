@@ -1,4 +1,4 @@
-import { find, flatten, values } from 'lodash';
+import { find, flatten, values } from 'lodash-es';
 
 export interface QuestionItem {
   id: number;

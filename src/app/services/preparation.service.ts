@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, delay, map, of } from "rxjs";
 import {  MOCK_DATA, QuestionItem } from "../components/category/category.config";
 import { Response, ResponseArray } from "../models/response.models";
-import {get} from "lodash";
+import {get} from "lodash-es";
 
 
 @Injectable({  providedIn: 'root'
