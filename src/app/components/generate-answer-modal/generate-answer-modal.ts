@@ -53,7 +53,7 @@ regenerateAnswer() {
 }
 
 saveAnswer() {
-  this.dialogRef.close(this.data.answer);
+  this.dialogRef.close();
 }
 
 }
