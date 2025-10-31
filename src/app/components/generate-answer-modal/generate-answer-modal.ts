@@ -27,7 +27,7 @@ export class GenerateAnswerModal implements OnInit {
 
   ngOnInit(): void {
       if (!this.data.answer) {
-      if (this.data.index < 4) { // Remove this if statement compelely if you would like to connect OpenAPI 
+      if (this.data.index < 10) { // Remove this if statement compelely if you would like to connect OpenAPI 
         this.data.answer = findAnswerById(this.data.id, MOCK_DATA_ANSWERS);
         return;
       }
