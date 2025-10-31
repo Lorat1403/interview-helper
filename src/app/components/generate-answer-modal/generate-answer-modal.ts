@@ -27,7 +27,7 @@ export class GenerateAnswerModal implements OnInit {
 
   ngOnInit(): void {
       if (!this.data.answer) {
-      if (this.data.index < 10) { // Remove this if statement compelely if you would like to connect OpenAPI 
+      if (this.data.index < 10) { 
         this.data.answer = findAnswerById(this.data.id, MOCK_DATA_ANSWERS);
         return;
       }
@@ -43,7 +43,7 @@ regenerateAnswer() {
         catchError((err) => {
           console.warn(err);
           this.isLoading = false;
-          return of('Error with OpenAI integration');
+          return of('This answer is not writed yet');
         })
       )
       .subscribe((response) => {

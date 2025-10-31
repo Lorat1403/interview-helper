@@ -7,7 +7,7 @@ export const routes: Routes = [
 
   { path: 'categories/:categoryId', component: Category },
   { path: 'preparation', component: Preparation },
-  {path:'', redirectTo: '/categories/angular', pathMatch: 'full'},
+  {path:'', redirectTo: '/preparation?tabIndex=0&tabName=angular', pathMatch: 'full'},
   { path: '**', component: PageNotFound }
 
 ];
